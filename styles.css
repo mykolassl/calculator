@@ -23,13 +23,13 @@ body {
     "four    five    six     multiplication"
     "one     two     three   division"
     "nought       nought  nought       equals";
-    width: min(40rem, 100%);
-    height: min(100% - 4rem, 100vh);
+    width: min(35rem, 100%);
+    height: calc(100% - 10rem);
 }
 
 .calculator__button {
     height: auto;
-    font-size: 1rem;
+    font-size: 1.2rem;
 }
 
 .calculator__display { grid-area: display; height: auto; background-color: black; }
