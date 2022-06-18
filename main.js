@@ -7,7 +7,7 @@ display.innerText = '';
 let isFirstValue = true;
 let firstValue = '';
 let secondValue = '';
-let operator;
+let operator = '';
 
 numberButtons.forEach((button) => {
     button.addEventListener('click', (e) => {
@@ -20,3 +20,19 @@ numberButtons.forEach((button) => {
         }
     });
 });
+
+operationButtons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+        if(!operator) display.innerText += e.target.innerText;
+        
+        if(e.target.innerText !== '=') {
+            operator = e.target.innerText;
+        } else {
+            calculate();
+        }
+    });
+});
+
+function calculate() {
+    
+}
