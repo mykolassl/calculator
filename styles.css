@@ -12,27 +12,47 @@ body {
     align-items: center;
     height: 100vh;
     font-family: sans-serif;
+    background-color: hsl(267, 65%, 18%);
 }
 
 .calculator {
     display: grid;
     grid-template-areas: 
     "display display display display"
-    "clear   clear   clear       addition"
+    "clear   clear   clear   addition"
     "seven   eight   nine    subtraction"
     "four    five    six     multiplication"
     "one     two     three   division"
-    "nought       nought  nought       equals";
+    "nought  nought  nought  equals";
+    gap: 0.2rem;
+    padding: 1rem;
     width: min(35rem, 100%);
     height: calc(100% - 10rem);
+    background-color: hsl(267, 100%, 50%);
+    border-radius: 20px;
 }
 
 .calculator__button {
-    height: auto;
+    border: none;
     font-size: 1.2rem;
+    background-color: hsl(267, 100%, 40%);
+    color: white;
+    border-radius: 10px;
 }
 
-.calculator__display { grid-area: display; height: auto; background-color: black; }
+.calculator__button:hover {
+    background-color:hsla(267, 80%, 45%, 0.5);
+}
+
+.calculator__display {
+    grid-area: display; 
+    font-size: 3rem;
+    padding: 1rem;
+    text-align: right;
+    color: white;
+    background-color: hsl(267, 100%, 40%); 
+    border-radius: 10px;
+}
 
 .calculator__button:nth-child(2) { grid-area: nought; }
 .calculator__button:nth-child(3) { grid-area: one; }
@@ -44,7 +64,6 @@ body {
 .calculator__button:nth-child(9) { grid-area: seven; }
 .calculator__button:nth-child(10) { grid-area: eight; }
 .calculator__button:nth-child(11) { grid-area: nine; }
-
 .calculator__button--add { grid-area: addition; }
 .calculator__button--sub { grid-area: subtraction; }
 .calculator__button--mul { grid-area: multiplication; }
