@@ -28,16 +28,28 @@ operationButtons.forEach((button) => {
         if(e.target.innerText === '=') {
             calculate();
         } else if(e.target.innerText === 'C') {
-            handleCleanup();
+            handleReset();
         } else {
+            if(isFirstValue) operator = e.target.innerText;
             isFirstValue = false;
-            operator = e.target.innerText;
         }
     });
 });
 
-function handleCleanup() {
+function handleReset() {
+    display.innerText = '';
+    firstValue = '';
+    secondValue = '';
+    operator = '';
+    isFirstValue = true;
+}
 
+function handleCleanup(result) {
+    display.innerText = result;
+    firstValue = `${result}`;
+    secondValue = '';
+    operator = '';
+    isFirstValue = true;
 }
 
 function calculate() {
@@ -45,18 +57,20 @@ function calculate() {
 
     switch(operator) {
         case '+':
-            result = parseInt(firstValue) + parseInt(secondValue);
+            result = parseFloat(firstValue) + parseFloat(secondValue);
             break;
         case '-':
-            result = parseInt(firstValue) - parseInt(secondValue);
+            result = parseFloat(firstValue) - parseFloat(secondValue);
             break;
-        case 'X':
-            result = parseInt(firstValue) * parseInt(secondValue);
+        case 'x':
+            result = parseFloat(firstValue) * parseFloat(secondValue);
             break;
         case '÷':
-            result = parseInt(firstValue) / parseInt(secondValue);
+            result = parseFloat(firstValue) / parseFloat(secondValue);
             break;
     }
 
-    display.innerText = result;
+    console.log({firstValue, secondValue, operator, result})
+
+    handleCleanup(Math.round(result * 100) / 100);
 }
