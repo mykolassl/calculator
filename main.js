@@ -23,16 +23,40 @@ numberButtons.forEach((button) => {
 
 operationButtons.forEach((button) => {
     button.addEventListener('click', (e) => {
-        if(!operator) display.innerText += e.target.innerText;
+        if(!operator && e.target.innerText !== '=' && e.target.innerText !== 'C') display.innerText += e.target.innerText;
         
-        if(e.target.innerText !== '=') {
-            operator = e.target.innerText;
-        } else {
+        if(e.target.innerText === '=') {
             calculate();
+        } else if(e.target.innerText === 'C') {
+            handleCleanup();
+        } else {
+            isFirstValue = false;
+            operator = e.target.innerText;
         }
     });
 });
 
+function handleCleanup() {
+
+}
+
 function calculate() {
-    
+    let result;
+
+    switch(operator) {
+        case '+':
+            result = parseInt(firstValue) + parseInt(secondValue);
+            break;
+        case '-':
+            result = parseInt(firstValue) - parseInt(secondValue);
+            break;
+        case 'X':
+            result = parseInt(firstValue) * parseInt(secondValue);
+            break;
+        case '÷':
+            result = parseInt(firstValue) / parseInt(secondValue);
+            break;
+    }
+
+    display.innerText = result;
 }
