@@ -11,18 +11,21 @@ let operator = '';
 
 numberButtons.forEach((button) => {
     button.addEventListener('click', (e) => {
-        display.innerText += e.target.innerText;
-
         if(isFirstValue) {
+            if(firstValue.length > 8) return;
             firstValue += e.target.innerText;
         } else {
+            if(secondValue.length > 8) return;
             secondValue += e.target.innerText;
         }
+        
+        display.innerText += e.target.innerText;
     });
 });
 
 operationButtons.forEach((button) => {
     button.addEventListener('click', (e) => {
+        if(firstValue === '') return;
         if(!operator && e.target.innerText !== '=' && e.target.innerText !== 'C') display.innerText += e.target.innerText;
         
         if(e.target.innerText === '=') {
@@ -30,8 +33,12 @@ operationButtons.forEach((button) => {
         } else if(e.target.innerText === 'C') {
             handleReset();
         } else {
-            if(isFirstValue) operator = e.target.innerText;
-            isFirstValue = false;
+            if(isFirstValue) {
+                operator = e.target.innerText;
+                isFirstValue = false;
+            } else if(!isFirstValue && secondValue !== '') {
+                calculate();
+            }
         }
     });
 });
@@ -55,6 +62,8 @@ function handleCleanup(result) {
 function calculate() {
     let result;
 
+    if(!secondValue || !operator) return;
+
     switch(operator) {
         case '+':
             result = parseFloat(firstValue) + parseFloat(secondValue);
@@ -66,6 +75,7 @@ function calculate() {
             result = parseFloat(firstValue) * parseFloat(secondValue);
             break;
         case '÷':
+            if(secondValue === '0') return alert(':)');
             result = parseFloat(firstValue) / parseFloat(secondValue);
             break;
     }
