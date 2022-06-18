@@ -64,12 +64,12 @@ body {
 .calculator__button:nth-child(9) { grid-area: seven; }
 .calculator__button:nth-child(10) { grid-area: eight; }
 .calculator__button:nth-child(11) { grid-area: nine; }
-.calculator__button--add { grid-area: addition; }
-.calculator__button--sub { grid-area: subtraction; }
-.calculator__button--mul { grid-area: multiplication; }
-.calculator__button--div { grid-area: division; }
-.calculator__button--equal { grid-area: equals; }
-.calculator__button--clear { grid-area: clear; }
+.calculator__button:nth-child(12) { grid-area: addition; }
+.calculator__button:nth-child(13) { grid-area: subtraction; }
+.calculator__button:nth-child(14) { grid-area: multiplication; }
+.calculator__button:nth-child(15) { grid-area: division; }
+.calculator__button:nth-child(16) { grid-area: equals; }
+.calculator__button:nth-child(17) { grid-area: clear; }
 
 
 
