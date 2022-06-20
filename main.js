@@ -80,7 +80,5 @@ function calculate() {
             break;
     }
 
-    console.log({firstValue, secondValue, operator, result})
-
     handleCleanup(Math.round(result * 100) / 100);
 }
